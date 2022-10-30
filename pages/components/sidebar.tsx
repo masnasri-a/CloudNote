@@ -5,7 +5,7 @@ import { IoHelpBuoy, IoPeople } from 'react-icons/io5';
 import { IoMdLogOut } from 'react-icons/io';
 import { useState } from "react";
 
-const Sidebar = () => {
+const Sidebar = (props:any) => {
     const [activeMenu, setActiveMenu] = useState({
         "server":"menu activeMenu",
         "account":"menu",
@@ -57,11 +57,14 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="sidebar">
+        <div className="sidebar" >
             <div className="logo d-flex justify-content-center">
                 <Image src={Logo} width="150px" height="82px" />
             </div>
-            <div className="menuSidebar" onClick={()=>handleOnClick("server")}>
+            <div className="menuSidebar" onClick={()=>{
+                handleOnClick("server")
+                props.onChange('Server')
+                }}>
                 <div className={activeMenu.server}>
                     <div className="dataMenuActive">
                         <FaServer size={30} color={color.server}/>
@@ -69,7 +72,10 @@ const Sidebar = () => {
                     </div>
                 </div>
             </div>
-            <div className="menuSidebar" onClick={()=>handleOnClick("account")}>
+            <div className="menuSidebar" onClick={()=>{
+                handleOnClick("account")
+                props.onChange('Account')
+                }}>
                 <div className={activeMenu.account}>
                     <div className="dataMenu ">
                         <IoPeople size={30} color={color.account}/>
@@ -77,7 +83,10 @@ const Sidebar = () => {
                     </div>
                 </div>
             </div>
-            <div className="menuSidebar" onClick={()=>handleOnClick("support")}>
+            <div className="menuSidebar" onClick={()=>{
+                handleOnClick("support")
+                props.onChange('Support')
+                }}>
                 <div className={activeMenu.support}>
                     <div className="dataMenu ">
                         <IoHelpBuoy size={30} color={color.support}/>
